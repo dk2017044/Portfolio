@@ -1,3 +1,4 @@
+// Dilip Kumar Portfolio - Application TypeScript Configuration
 {
   "compilerOptions": {
     "target": "ES2020",

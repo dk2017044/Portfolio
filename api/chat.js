@@ -1,4 +1,6 @@
-const MODEL = 'openai/gpt-oss-20b'; // Groq's fastest current model (900+ tokens/sec). Llama 3.1 8B / 3.3 70B are deprecated on Groq as of June 2026.
+// Dilip Kumar Portfolio - AI Assistant Serverless API
+// Powered by Groq Cloud
+const MODEL = 'openai/gpt-oss-20b';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {

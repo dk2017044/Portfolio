@@ -1,7 +1,14 @@
 {
   "name": "dilip-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "3D Portfolio Website of Dilip Kumar - Electronics Engineer & Developer",
+  "author": "Dilip Kumar <dk2017044@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dk2017044/Portfolio.git"
+  },
+  "homepage": "https://github.com/dk2017044/Portfolio#readme",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
