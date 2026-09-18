@@ -13,7 +13,7 @@ const setCharacter = (
   loader.setDRACOLoader(dracoLoader);
 
   const loadCharacter = () => {
-    return new Promise<GLTF | null>((resolve, reject) => {
+    return new Promise<GLTF | null>((resolve) => {
       loader.load(
         "/models/white_mesh.glb",
         async (gltf) => {
@@ -72,8 +72,8 @@ const setCharacter = (
         },
         undefined,
         (error) => {
-          console.error("Error loading GLTF model:", error);
-          reject(error);
+          console.warn("Could not load GLTF model:", error);
+          resolve(null);
         }
       );
     });

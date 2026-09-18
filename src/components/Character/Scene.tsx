@@ -54,27 +54,53 @@ const Scene = () => {
       let progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
-      loadCharacter().then((gltf) => {
-        if (gltf) {
-          const animations = setAnimations(gltf);
-          hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
-          mixer = animations.mixer;
-          let character = gltf.scene;
-          setChar(character);
-          scene.add(character);
-          headBone = character.getObjectByName("spine006") || character;
-          screenLight = character.getObjectByName("screenlight") || null;
-          progress.loaded().then(() => {
-            setTimeout(() => {
-              light.turnOnLights();
-              animations.startIntro();
-            }, 2500);
-          });
-          window.addEventListener("resize", () =>
-            handleResize(renderer, camera, canvasDiv, character)
-          );
-        }
-      });
+      let isFinished = false;
+      const finishLoading = () => {
+        if (isFinished) return;
+        isFinished = true;
+        progress.loaded().then(() => {
+          setTimeout(() => {
+            light.turnOnLights();
+          }, 2500);
+        });
+      };
+
+      // Fallback: never let loader remain stuck if network/model loading stalls
+      const safetyTimeout = setTimeout(() => {
+        finishLoading();
+      }, 5000);
+
+      loadCharacter()
+        .then((gltf) => {
+          if (gltf) {
+            clearTimeout(safetyTimeout);
+            const animations = setAnimations(gltf);
+            hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
+            mixer = animations.mixer;
+            let character = gltf.scene;
+            setChar(character);
+            scene.add(character);
+            headBone = character.getObjectByName("spine006") || character;
+            screenLight = character.getObjectByName("screenlight") || null;
+            if (!isFinished) {
+              isFinished = true;
+              progress.loaded().then(() => {
+                setTimeout(() => {
+                  light.turnOnLights();
+                  animations.startIntro();
+                }, 2500);
+              });
+            }
+            window.addEventListener("resize", () =>
+              handleResize(renderer, camera, canvasDiv, character)
+            );
+          } else {
+            finishLoading();
+          }
+        })
+        .catch(() => {
+          finishLoading();
+        });
 
       let mouse = { x: 0, y: 0 },
         interpolation = { x: 0.1, y: 0.2 };
@@ -128,6 +154,7 @@ const Scene = () => {
       };
       animate();
       return () => {
+        clearTimeout(safetyTimeout);
         clearTimeout(debounce);
         scene.clear();
         renderer.dispose();
