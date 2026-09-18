@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/dk2017044/Portfolio.git"
   },
-  "homepage": "https://github.com/dk2017044/Portfolio#readme",
+  "homepage": "https://portfolio-six-sigma-6s1hga9obr.vercel.app/",
   "type": "module",
   "scripts": {
     "dev": "vite --host",

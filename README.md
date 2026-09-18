@@ -4,6 +4,8 @@ Welcome to the official repository for **Dilip Kumar's** interactive 3D Portfoli
 
 Built with **React**, **TypeScript**, **Three.js**, **GSAP**, and **Vercel Serverless Functions**, featuring an interactive 3D character, responsive design, and an integrated AI assistant powered by Groq.
 
+> 🌐 **Live Website:** [https://portfolio-six-sigma-6s1hga9obr.vercel.app/](https://portfolio-six-sigma-6s1hga9obr.vercel.app/)
+
 ---
 
 ## 👨‍💻 About Me
@@ -89,6 +91,7 @@ npm run build
 
 ## 📬 Connect with Me
 
+- **Website:** [portfolio-six-sigma-6s1hga9obr.vercel.app](https://portfolio-six-sigma-6s1hga9obr.vercel.app/)
 - **GitHub:** [@dk2017044](https://github.com/dk2017044)
 - **LinkedIn:** [Dilip Kumar](https://www.linkedin.com/in/di7xu)
 - **Email:** [dk2017044@hotmail.com](mailto:dk2017044@hotmail.com)
