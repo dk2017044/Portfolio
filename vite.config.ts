@@ -5,7 +5,7 @@ function localChatApiPlugin(groqKey: string): Plugin {
   return {
     name: "local-chat-api",
     configureServer(server) {
-      server.middlewares.use("/api/chat", async (req, res) => {
+      server.middlewares.use("/api/chat", async (req: any, res: any) => {
         if (req.method !== "POST") {
           res.statusCode = 405;
           res.end(JSON.stringify({ error: "Method not allowed" }));
@@ -13,7 +13,7 @@ function localChatApiPlugin(groqKey: string): Plugin {
         }
 
         let body = "";
-        req.on("data", (chunk) => {
+        req.on("data", (chunk: any) => {
           body += chunk;
         });
 
