@@ -6,6 +6,7 @@
   z-index: 99;
   left: 50%;
   transform: translateX(-50%);
+  pointer-events: none;
 }
 .social-icons {
   position: absolute;
@@ -16,6 +17,7 @@
   gap: 8px;
   z-index: 999;
   padding: 10px;
+  pointer-events: auto;
 }
 .social-icons:hover {
   transition: 0.3s;
@@ -50,6 +52,7 @@
   gap: 5px;
   bottom: 40px;
   right: 0;
+  pointer-events: auto;
   width: auto;
   text-wrap: nowrap;
   letter-spacing: 4px;

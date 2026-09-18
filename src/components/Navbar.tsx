@@ -11,7 +11,35 @@ export let lenis: Lenis | null = null;
 
 const Navbar = () => {
   useEffect(() => {
-    // Initialize Lenis smooth scroll
+    // On mobile and tablet devices, use native browser touch scrolling
+    if (window.innerWidth <= 1024) {
+      document.documentElement.style.overflowY = "auto";
+      document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "hidden";
+
+      const links = document.querySelectorAll(".header ul a");
+      const clickHandlers: Array<[Element, (e: Event) => void]> = [];
+      links.forEach((elem) => {
+        const handler = (e: Event) => {
+          const targetHref = (elem as HTMLElement).getAttribute("data-href");
+          if (targetHref) {
+            e.preventDefault();
+            const targetElem = document.querySelector(targetHref);
+            if (targetElem) {
+              targetElem.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        };
+        elem.addEventListener("click", handler);
+        clickHandlers.push([elem, handler]);
+      });
+
+      return () => {
+        clickHandlers.forEach(([elem, handler]) => elem.removeEventListener("click", handler));
+      };
+    }
+
+    // Initialize Lenis smooth scroll for Desktop
     lenis = new Lenis({
       duration: 1.7,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -23,45 +51,45 @@ const Navbar = () => {
       infinite: false,
     });
 
-    // Start paused
+    // Start paused until loader completes
     lenis.stop();
 
-    // Handle smooth scroll animation frame
+    let reqId: number;
     function raf(time: number) {
       lenis?.raf(time);
-      requestAnimationFrame(raf);
+      reqId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    reqId = requestAnimationFrame(raf);
 
-    // Handle navigation links
-    let links = document.querySelectorAll(".header ul a");
+    // Handle navigation links on desktop
+    const links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          if (section && lenis) {
-            const target = document.querySelector(section) as HTMLElement;
-            if (target) {
-              lenis.scrollTo(target, {
-                offset: 0,
-                duration: 1.5,
-              });
-            }
+        e.preventDefault();
+        let section = element.getAttribute("data-href");
+        if (section && lenis) {
+          const target = document.querySelector(section) as HTMLElement;
+          if (target) {
+            lenis.scrollTo(target, {
+              offset: 0,
+              duration: 1.5,
+            });
           }
         }
       });
     });
 
-    // Handle resize
-    window.addEventListener("resize", () => {
+    const resizeHandler = () => {
       lenis?.resize();
-    });
+    };
+    window.addEventListener("resize", resizeHandler);
 
     return () => {
+      cancelAnimationFrame(reqId);
+      window.removeEventListener("resize", resizeHandler);
       lenis?.destroy();
+      lenis = null;
     };
   }, []);
   return (
