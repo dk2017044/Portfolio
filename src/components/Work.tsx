@@ -78,6 +78,24 @@ const Work = () => {
                 </div>
                 <h4>Tools and features</h4>
                 <p>{project.technologies}</p>
+                {(project as any).downloadUrl && (
+                  <div style={{ marginTop: "16px" }}>
+                    <a
+                      href={(project as any).downloadUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="work-download-apk-btn"
+                      data-cursor="disable"
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                      </svg>
+                      Download APK (v4.0.2)
+                    </a>
+                  </div>
+                )}
               </div>
               <WorkImage image={project.image} alt={project.title} link={project.link} />
             </div>

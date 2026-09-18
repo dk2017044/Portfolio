@@ -29,6 +29,13 @@ const MyWorks = () => {
                 <p className="myworks-card-category">{project.category}</p>
                 <p className="myworks-card-description">{project.description}</p>
                 <p className="myworks-card-tech">{project.technologies}</p>
+                {(project as any).downloadUrl && (
+                  <div style={{ marginTop: "12px" }}>
+                    <span className="work-download-apk-btn">
+                      📥 Download APK (v4.0.2)
+                    </span>
+                  </div>
+                )}
               </div>
             </>
           );

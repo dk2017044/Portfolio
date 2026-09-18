@@ -1,192 +1,109 @@
 export const config = {
     developer: {
-        name: "Redoyanul",
-        fullName: "Redoyanul Haque",
-        title: "AI & Full-Stack Developer",
-        description: "AI & Full-Stack Developer building intelligent systems and modern web applications. Passionate about machine learning, deep learning, and creating next-gen autonomous agents."
+        name: "Dilip",
+        fullName: "Dilip Kumar",
+        title: "Electronics Engineer | AI & Software Enthusiast",
+        description: "Electronics Engineering student exploring Electronics, AI, and Software Development. I enjoy building practical projects, learning new technologies, and creating digital content."
     },
     social: {
-        github: "red1-for-hek",
-        email: "redoyanul1234@gmail.com",
-        location: "Bangladesh"
+        github: "dk2017044",
+        email: "dk2017044@hotmail.com",
+        location: "Patna, India"
     },
     about: {
         title: "About Me",
-        description: "I am a self-taught AI & Full-Stack Developer from Bangladesh. I build intelligent systems, chatbots, and modern web applications. My expertise includes Machine Learning, Deep Learning, NLP, and Full-Stack Web Development with React, Node.js, and Python. Currently building next-gen AI Agents and JARVIS-like Personal Assistants. I have a competitive programming mindset and a deep passion for automation. Code is poetry, AI is the canvas."
+        description: "I am a 2nd-year Electronics Engineering student at Government Polytechnic Patna-7. I am learning programming, AI, and software development. I enjoy building practical electronics and coding projects, especially with Python. I am also interested in video editing and creative digital content."
     },
     experiences: [
         {
-            position: "Learning Something New",
-            company: "Self-Development",
+            position: "Diploma in Electronics Engineering",
+            company: "Government Polytechnic Patna-7",
             period: "2025 - Present",
-            location: "Bangladesh",
-            description: "Continuously exploring emerging technologies, researching advanced AI systems, and pushing the boundaries of what's possible in tech.",
+            location: "Patna, Bihar, India",
+            description: "Currently studying Electronics Engineering and learning programming, AI, software development, and practical electronics.",
             responsibilities: [
-                "Researching cutting-edge AI and ML technologies",
-                "Experimenting with new frameworks and tools",
-                "Contributing to open-source projects",
-                "Building innovative personal projects"
+                "Studying core electronics, circuit design, and electronic components",
+                "Learning programming in Python, C, C++, Kotlin, and Java",
+                "Building practical electronics toolkits and software applications",
+                "Exploring Generative AI, prompt engineering, and modern developer tools"
             ],
-            technologies: ["Research", "Innovation", "Open Source", "New Tech"]
+            technologies: ["Electronics", "Python", "Kotlin", "C", "C++", "Circuit Design", "AI Basics"]
         },
         {
-            position: "AI Engineer",
-            company: "Freelance & Projects",
-            period: "2025",
-            location: "Bangladesh",
-            description: "Developing intelligent AI systems, chatbots, and machine learning solutions. Building next-gen conversational AI agents and JARVIS-like personal assistants.",
+            position: "Secondary Education (10th)",
+            company: "R.S.L.N. Vidya Mandir, Balua Bazar, Supaul, Bihar",
+            period: "Completed",
+            location: "Supaul, Bihar, India",
+            description: "Completed secondary education with a strong foundation in science, mathematics, and foundational computer skills.",
             responsibilities: [
-                "Building AI-powered chatbots and conversational agents",
-                "Developing machine learning models with TensorFlow and PyTorch",
-                "Working with LLMs and transformer architectures",
-                "Creating autonomous AI systems and automation tools"
+                "Built strong academic foundation in science, physics, and mathematics",
+                "Developed early curiosity and passion for technology and electronics",
+                "Participated in school academic, digital, and creative activities"
             ],
-            technologies: ["Python", "TensorFlow", "PyTorch", "LLMs", "NLP", "AI Agents"]
-        },
-        {
-            position: "Full-Stack Developer",
-            company: "Freelance & Projects",
-            period: "2024",
-            location: "Bangladesh",
-            description: "Built complete web applications from frontend to backend. Developed responsive UIs, RESTful APIs, and database solutions for various clients and projects.",
-            responsibilities: [
-                "Developing full-stack web applications using React and Node.js",
-                "Building RESTful APIs and integrating databases",
-                "Creating responsive and interactive user interfaces",
-                "Deploying and maintaining web applications"
-            ],
-            technologies: ["React", "Node.js", "MongoDB", "Express", "Next.js", "TypeScript"]
-        },
-        {
-            position: "Python Developer",
-            company: "Self-Taught & Projects",
-            period: "2023",
-            location: "Bangladesh",
-            description: "Dove deep into Python programming, building automation scripts, bots, and mastering the fundamentals of software development and problem-solving.",
-            responsibilities: [
-                "Learning Python programming and core concepts",
-                "Building automation scripts and Discord bots",
-                "Exploring data structures and algorithms",
-                "Participating in competitive programming"
-            ],
-            technologies: ["Python", "Automation", "Scripting", "Discord.py", "Problem Solving"]
-        },
-        {
-            position: "Graphic Designer",
-            company: "Freelance",
-            period: "2022",
-            location: "Bangladesh",
-            description: "Started my creative journey as a graphic designer, creating logos, banners, and visual content. This sparked my passion for technology and digital creation.",
-            responsibilities: [
-                "Designing logos and brand identity materials",
-                "Creating social media graphics and banners",
-                "Working with clients on creative projects",
-                "Learning design principles and visual aesthetics"
-            ],
-            technologies: ["Photoshop", "Illustrator", "Canva", "Figma", "Visual Design"]
-        },
-        {
-            position: "Microsoft Office",
-            company: "Begin Learning",
-            period: "2021",
-            location: "Bangladesh",
-            description: "Started my journey into the digital world by learning Microsoft Office tools. This foundational step introduced me to computers and sparked my curiosity for technology.",
-            responsibilities: [
-                "Learning Microsoft Word, Excel, and PowerPoint",
-                "Creating documents and presentations",
-                "Understanding basic computer operations",
-                "Building foundational digital skills"
-            ],
-            technologies: ["MS Word", "MS Excel", "MS PowerPoint", "Computer Basics"]
+            technologies: ["Science", "Mathematics", "Computer Basics"]
         }
     ],
     projects: [
         {
             id: 1,
-            title: "Drishti",
-            category: "AI / LLM",
-            technologies: "Python, PyTorch, Transformers, FastAPI, React, MongoDB",
-            image: "/images/Drishti.png",
-            description: "Bangladesh's first intelligent advanced AI chatbot powered by a custom Large Language Model. Features natural language understanding, contextual conversations, and multilingual support including Bengali.",
-            link: "https://huggingface.co/red1-for-hek/drishti-ilm-x1"
+            title: "ElectroKit – Electronics Toolkit",
+            category: "Android / Electronics",
+            technologies: "Android, Kotlin, Firebase, Material Design",
+            image: "/images/electrokit.jpg",
+            description: "An all-in-one electronics toolkit for students featuring number system conversion, resistor color code, SMD resistor code, capacitor and inductor codes, Ohm's Law, power, LED resistor, and series/parallel calculators.",
+            link: "https://github.com/dk2017044/ElectroKit/raw/main/Build_Releases_APK/ElectroKit_v4.0.2.apk",
+            downloadUrl: "https://github.com/dk2017044/ElectroKit/raw/main/Build_Releases_APK/ElectroKit_v4.0.2.apk",
+            githubUrl: "https://github.com/dk2017044/ElectroKit"
         },
         {
             id: 2,
-            title: "VoteChain",
-            category: "Blockchain",
-            technologies: "Solidity, Web3.js, React, Ethereum, IPFS, MetaMask, Node.js",
-            image: "/images/VoteChain.png",
-            description: "A decentralized election system built on blockchain technology ensuring transparent, tamper-proof, and verifiable voting. Features smart contracts for vote integrity and real-time result tracking.",
-            link: "https://github.com/red1-for-hek/smart-election-by-blockchain"
+            title: "Python Turtle Projects",
+            category: "Python / Graphics",
+            technologies: "Python, Turtle Graphics, Algorithms, Math",
+            image: "/images/python_turtle.jpg",
+            description: "Creative graphics, algorithmic patterns, and interactive programming experiments created while learning Python programming fundamentals.",
+            link: "https://github.com/dk2017044"
+        },
+        {
+            id: 3,
+            title: "Practical Electronics & Circuits",
+            category: "Electronics / Hardware",
+            technologies: "Analog & Digital Circuits, Sensors, Hardware Testing",
+            image: "/images/electronics_circuits.jpg",
+            description: "Hands-on electronics engineering experiments focusing on circuit prototyping, component testing, sensor interfacing, and practical hardware design.",
+            link: "https://github.com/dk2017044"
         },
         {
             id: 4,
-            title: "Flood Spaces 2.0",
-            category: "AI / ML",
-            technologies: "Python, TensorFlow, Pandas, React, FastAPI, GIS",
-            image: "/images/FloodSpaces.png",
-            description: "Predicts flood risks across Bangladesh up to one month in advance and sends early alerts to help people prepare.",
-            link: "https://github.com/red1-for-hek/Flood-Spaces-2.0"
-        },
-        {
-            id: 5,
-            title: "Phoenix 3.0",
-            category: "AI Assistant",
-            technologies: "Python, Speech Recognition, PyAutoGUI, OpenAI API, Tkinter",
-            image: "/images/Phoenix3.0.png",
-            description: "A JARVIS-inspired personal AI desktop assistant. Controls system functions, manages tasks, answers queries, automates workflows, and provides voice-activated computing experience.",
-            link: "https://github.com/red1-for-hek/phoenix3.0"
-        },
-        {
-            id: 6,
-            title: "RedxChess",
-            category: "AI / Game Engine",
-            technologies: "Python, C++, Neural Networks, Bitboards, UCI Protocol",
-            image: "/images/RedxChess.png",
-            description: "A high-performance chess engine rated 3640 ELO. Features advanced search algorithms, neural network evaluation, and optimized bitboard representation for lightning-fast move generation.",
-            link: "/play"
-        },
-        {
-            id: 7,
-            title: "Prodesk",
-            category: "E-commerce",
-            technologies: "React, Node.js, MongoDB, Express, Stripe",
-            image: "/images/Prodesk.png",
-            description: "A complete e-commerce platform with secure checkout and smooth product browsing.",
-            link: "https://github.com/red1-for-hek/prodesk"
-        },
-        {
-            id: 8,
-            title: "HekTools",
-            category: "Security / Android",
-            technologies: "Kotlin, Android SDK, Firebase, Python, Encryption",
-            image: "/images/hektools.png",
-            description: "An advanced Android monitoring and security research tool. Features remote device management, activity logging, and encrypted data transmission for security testing purposes.",
-            link: ""
+            title: "AI & Software Development Lab",
+            category: "AI / Development",
+            technologies: "Generative AI, Prompt Engineering, Python, VS Code, Git",
+            image: "/images/ai_lab.jpg",
+            description: "Explorations in Generative AI, AI-assisted software development, and prompt engineering workflows to build practical solutions and accelerate learning.",
+            link: "https://github.com/dk2017044"
         }
     ],
     contact: {
-        email: "redoyanul1234@gmail.com",
-        github: "https://github.com/red1-for-hek",
-        linkedin: "https://linkedin.com/in/red1-for-hek",
-        twitter: "https://x.com/red_1_ul",
-        facebook: "https://www.facebook.com/redoyanulhaque.hacker.official",
-        instagram: "https://www.instagram.com/red_1_ul"
+        email: "dk2017044@hotmail.com",
+        github: "https://github.com/dk2017044/",
+        linkedin: "https://www.linkedin.com/in/di7xu",
+        twitter: "",
+        facebook: "",
+        instagram: "https://www.instagram.com/di7xu",
+        youtube: "https://www.youtube.com/@di7xu"
     },
     skills: {
         develop: {
-            title: "AI DEVELOPER",
-            description: "Building intelligent systems & AI solutions",
-            details: "Developing AI agents, chatbots, and machine learning models using Python, TensorFlow, and PyTorch. Specializing in LLMs, NLP, deep learning, and autonomous systems.",
-            tools: ["Python", "TensorFlow", "PyTorch", "OpenCV", "Scikit-learn", "LLMs", "NLP", "Deep Learning", "Chatbots", "AI Agents"]
+            title: "ELECTRONICS & CODE",
+            description: "Electronics engineering, Python & software development",
+            details: "Studying electronics engineering while developing strong programming fundamentals across Python, Kotlin, C, C++, Java, HTML/CSS, and Rust. Built Android tools like ElectroKit and practical electronics projects.",
+            tools: ["Python", "Java", "C", "C++", "Kotlin", "Rust", "HTML", "CSS", "Android Studio", "VS Code"]
         },
         design: {
-            title: "FULL-STACK",
-            description: "Modern web development & scalable applications",
-            details: "Building responsive and performant web applications using React, Next.js, Node.js, and databases. Creating seamless user experiences with modern UI/UX principles.",
-            tools: ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "PostgreSQL", "TailwindCSS", "REST APIs", "Docker", "Git"]
+            title: "AI & CREATIVE TECH",
+            description: "Generative AI, video editing & digital content creation",
+            details: "Leveraging Generative AI, AI-assisted development, and prompt engineering alongside video editing with CapCut and VN, and visual design in Canva.",
+            tools: ["Generative AI", "AI-assisted Dev", "Prompt Engineering", "Video Editing", "CapCut", "VN", "Canva", "Git", "GitHub"]
         }
     }
 };
-
-
