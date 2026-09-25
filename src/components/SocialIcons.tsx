@@ -9,6 +9,7 @@ import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
 import HoverLinks from "./HoverLinks";
 import { config } from "../config";
+import { smoothNavigateTo } from "../utils/navigation";
 
 const SocialIcons = () => {
   useEffect(() => {
@@ -81,7 +82,14 @@ const SocialIcons = () => {
           </a>
         </span>
       </div>
-      <a className="resume-button" href="#contact">
+      <a
+        className="resume-button"
+        href="#contact"
+        onClick={(e) => {
+          e.preventDefault();
+          smoothNavigateTo("#contact");
+        }}
+      >
         <HoverLinks text="CONTACT" />
         <span>
           <TbNotes />

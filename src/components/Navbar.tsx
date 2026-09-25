@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import Lenis from "lenis";
 import "./styles/Navbar.css";
 import { config } from "../config";
+import { smoothNavigateTo } from "../utils/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
@@ -24,10 +25,7 @@ const Navbar = () => {
           const targetHref = (elem as HTMLElement).getAttribute("data-href");
           if (targetHref) {
             e.preventDefault();
-            const targetElem = document.querySelector(targetHref);
-            if (targetElem) {
-              targetElem.scrollIntoView({ behavior: "smooth" });
-            }
+            smoothNavigateTo(targetHref);
           }
         };
         elem.addEventListener("click", handler);
@@ -68,14 +66,8 @@ const Navbar = () => {
       element.addEventListener("click", (e) => {
         e.preventDefault();
         const section = element.getAttribute("data-href");
-        if (section && lenis) {
-          const target = document.querySelector(section) as HTMLElement;
-          if (target) {
-            lenis.scrollTo(target, {
-              offset: 0,
-              duration: 1.5,
-            });
-          }
+        if (section) {
+          smoothNavigateTo(section);
         }
       });
     });
@@ -95,7 +87,15 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+        <a
+          href="/#"
+          className="navbar-title"
+          data-cursor="disable"
+          onClick={(e) => {
+            e.preventDefault();
+            smoothNavigateTo("#landingDiv");
+          }}
+        >
           DK
         </a>
         <a
