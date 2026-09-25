@@ -1,4 +1,65 @@
-export const config = {
+export interface ProjectItem {
+    id: number;
+    title: string;
+    category: string;
+    technologies: string;
+    image: string;
+    description: string;
+    link?: string;
+    downloadUrl?: string;
+    githubUrl?: string;
+}
+
+export const config: {
+    developer: {
+        name: string;
+        fullName: string;
+        title: string;
+        description: string;
+    };
+    social: {
+        github: string;
+        email: string;
+        location: string;
+    };
+    about: {
+        title: string;
+        description: string;
+    };
+    experiences: Array<{
+        position: string;
+        company: string;
+        period: string;
+        location: string;
+        description: string;
+        responsibilities: string[];
+        technologies: string[];
+    }>;
+    projects: ProjectItem[];
+    contact: {
+        email: string;
+        github: string;
+        linkedin: string;
+        twitter: string;
+        facebook: string;
+        instagram: string;
+        youtube: string;
+    };
+    skills: {
+        develop: {
+            title: string;
+            description: string;
+            details: string;
+            tools: string[];
+        };
+        design: {
+            title: string;
+            description: string;
+            details: string;
+            tools: string[];
+        };
+    };
+} = {
     developer: {
         name: "Dilip",
         fullName: "Dilip Kumar",

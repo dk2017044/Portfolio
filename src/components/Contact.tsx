@@ -83,7 +83,7 @@ const Contact = () => {
       } else {
         throw new Error(data.message || "Failed to send message");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Form submission error:", err);
       setStatus("error");
       setErrorMessage("Couldn't send message. Please send an email directly.");

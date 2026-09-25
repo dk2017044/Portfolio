@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv, Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 
-function localChatApiPlugin(groqKey: string): Plugin {
+function localChatApiPlugin(groqKey: string, groqModel?: string): Plugin {
   return {
     name: "local-chat-api",
     configureServer(server) {
@@ -28,6 +28,7 @@ function localChatApiPlugin(groqKey: string): Plugin {
               return;
             }
 
+            const model = groqModel || process.env.GROQ_MODEL || "qwen/qwen3.8-27b";
             const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
               method: "POST",
               headers: {
@@ -35,20 +36,27 @@ function localChatApiPlugin(groqKey: string): Plugin {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                model: "qwen/qwen3.8-27b",
+                model,
                 messages,
                 temperature: 0.7,
-                max_tokens: 300,
+                max_tokens: 350,
               }),
             });
 
             const data = await groqRes.json();
+            if (data?.choices && data.choices[0]?.message) {
+              const msg = data.choices[0].message;
+              if (!msg.content && msg.reasoning) {
+                msg.content = msg.reasoning;
+              }
+            }
             res.setHeader("Content-Type", "application/json");
             res.statusCode = groqRes.status;
             res.end(JSON.stringify(data));
-          } catch (err: any) {
+          } catch (err: unknown) {
             res.statusCode = 500;
-            res.end(JSON.stringify({ error: err.message }));
+            const message = err instanceof Error ? err.message : "Unknown error";
+            res.end(JSON.stringify({ error: message }));
           }
         });
       });
@@ -60,9 +68,10 @@ function localChatApiPlugin(groqKey: string): Plugin {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const groqKey = env.GROQ_API_KEY || process.env.GROQ_API_KEY || "";
+  const groqModel = env.GROQ_MODEL || process.env.GROQ_MODEL || "qwen/qwen3.8-27b";
 
   return {
-    plugins: [react(), localChatApiPlugin(groqKey)],
+    plugins: [react(), localChatApiPlugin(groqKey, groqModel)],
     build: {
       rollupOptions: {
         output: {

@@ -52,8 +52,8 @@ export const handleHeadRotation = (
     );
     const isSittingModel = headBone.name === "spine006";
     const xBase = isSittingModel ? -0.5 * maxRotation : 0;
-    let minRotationX = -0.3;
-    let maxRotationX = 0.4;
+    const minRotationX = -0.3;
+    const maxRotationX = 0.4;
     if (mouseY > minRotationX) {
       if (mouseY < maxRotationX) {
         headBone.rotation.x = lerp(

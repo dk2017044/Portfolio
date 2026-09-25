@@ -132,18 +132,59 @@ const Play = () => {
     };
   }, []);
 
+  const makeMove = useCallback((from: Square, to: Square, promotion: string = 'q') => {
+    try {
+      setGame(prevGame => {
+        const gameCopy = new Chess(prevGame.fen());
+        const move = gameCopy.move({ from, to, promotion });
+
+        if (move) {
+          // Update captured pieces
+          if (move.captured) {
+            if (move.color === 'w') {
+              setCapturedBlack(prev => [...prev, move.captured!]);
+            } else {
+              setCapturedWhite(prev => [...prev, move.captured!]);
+            }
+          }
+
+          // Update move history
+          setMoveHistory(prev => [...prev, {
+            from: move.from,
+            to: move.to,
+            piece: move.piece,
+            captured: move.captured,
+            san: move.san
+          }]);
+
+          setLastMove({ from: from, to: to });
+          setSelectedSquare(null);
+          setPossibleMoves([]);
+          return gameCopy;
+        }
+        return prevGame;
+      });
+    } catch {
+      setSelectedSquare(null);
+      setPossibleMoves([]);
+    }
+  }, []);
+
   useEffect(() => {
     if (game.turn() === 'b' && !game.isGameOver() && redoxchessRef.current) {
       setEngineThinking(true);
       redoxchessRef.current.setPosition(game.fen());
       redoxchessRef.current.getBestMove((move) => {
-        const from = move.substring(0, 2) as Square;
-        const to = move.substring(2, 4) as Square;
-        makeMove(from, to);
+        if (move && move.length >= 4) {
+          const from = move.substring(0, 2) as Square;
+          const to = move.substring(2, 4) as Square;
+          const promotion = move.length > 4 ? move.substring(4, 5) : 'q';
+          makeMove(from, to, promotion);
+        }
         setEngineThinking(false);
       }, 12);
     }
-  }, [game]);
+  }, [game, makeMove]);
 
   const getPieceAt = (square: Square): { type: PieceSymbol; color: Color } | null => {
     return game.get(square) || null;
@@ -175,41 +216,6 @@ const Play = () => {
         const moves = game.moves({ square, verbose: true });
         setPossibleMoves(moves.map(m => m.to as Square));
       }
-    }
-  };
-
-  const makeMove = (from: Square, to: Square) => {
-    try {
-      const gameCopy = new Chess(game.fen());
-      const move = gameCopy.move({ from, to, promotion: 'q' }); // Auto-promote to queen
-
-      if (move) {
-        // Update captured pieces
-        if (move.captured) {
-          if (move.color === 'w') {
-            setCapturedBlack(prev => [...prev, move.captured!]);
-          } else {
-            setCapturedWhite(prev => [...prev, move.captured!]);
-          }
-        }
-
-        // Update move history
-        setMoveHistory(prev => [...prev, {
-          from: move.from,
-          to: move.to,
-          piece: move.piece,
-          captured: move.captured,
-          san: move.san
-        }]);
-
-        setLastMove({ from: from, to: to });
-        setGame(gameCopy);
-        setSelectedSquare(null);
-        setPossibleMoves([]);
-      }
-    } catch {
-      setSelectedSquare(null);
-      setPossibleMoves([]);
     }
   };
 
@@ -266,21 +272,26 @@ const Play = () => {
       });
 
       const data = await response.json();
+      const replyContent = data?.choices?.[0]?.message?.content || data?.choices?.[0]?.message?.reasoning;
 
-      if (data.choices && data.choices[0]?.message?.content) {
+      if (replyContent && typeof replyContent === 'string' && replyContent.trim()) {
         const assistantMessage: ChatMessage = {
           role: 'assistant',
-          content: data.choices[0].message.content
+          content: replyContent.trim()
         };
         setChatMessages(prev => [...prev, assistantMessage]);
       } else {
-        throw new Error('Invalid response');
+        throw new Error(data?.error?.message || data?.error || 'Invalid response from AI assistant');
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Chat error:', error);
+      const errorMessageStr = error instanceof Error ? error.message : String(error);
+      const errorText = errorMessageStr.includes('API_KEY')
+        ? 'AI assistant is not configured yet (GROQ_API_KEY needed). 🤖'
+        : 'Sorry, having some connection issues. Try again? 😅';
       const errorMessage: ChatMessage = {
         role: 'assistant',
-        content: 'Sorry, having some connection issues. Try again? 😅'
+        content: errorText
       };
       setChatMessages(prev => [...prev, errorMessage]);
     } finally {

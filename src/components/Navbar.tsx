@@ -64,10 +64,10 @@ const Navbar = () => {
     // Handle navigation links on desktop
     const links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
+      const element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
         e.preventDefault();
-        let section = element.getAttribute("data-href");
+        const section = element.getAttribute("data-href");
         if (section && lenis) {
           const target = document.querySelector(section) as HTMLElement;
           if (target) {

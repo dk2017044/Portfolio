@@ -5,10 +5,6 @@ export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
   camera: THREE.PerspectiveCamera
 ) {
-  let intensity: number = 0;
-  setInterval(() => {
-    intensity = Math.random();
-  }, 200);
   const tl1 = gsap.timeline({
     scrollTrigger: {
       trigger: ".landing-section",
@@ -36,31 +32,39 @@ export function setCharTimeline(
       invalidateOnRefresh: true,
     },
   });
-  let screenLight: any, monitor: any;
-  character?.children.forEach((object: any) => {
+  let screenLight: THREE.Mesh | undefined;
+  let monitor: THREE.Mesh | undefined;
+  character?.children.forEach((object: THREE.Object3D) => {
     if (object.name === "Plane004") {
-      object.children.forEach((child: any) => {
-        child.material.transparent = true;
-        child.material.opacity = 0;
-        if (child.material.name === "Material.027") {
-          monitor = child;
-          child.material.color.set("#FFFFFF");
+      object.children.forEach((child: THREE.Object3D) => {
+        const mesh = child as THREE.Mesh;
+        if (mesh.material && !Array.isArray(mesh.material)) {
+          mesh.material.transparent = true;
+          mesh.material.opacity = 0;
+          if (mesh.material.name === "Material.027") {
+            monitor = mesh;
+            (mesh.material as THREE.MeshStandardMaterial).color.set("#FFFFFF");
+          }
         }
       });
     }
     if (object.name === "screenlight") {
-      object.material.transparent = true;
-      object.material.opacity = 0;
-      object.material.emissive.set("#C8BFFF");
-      gsap.timeline({ repeat: -1, repeatRefresh: true }).to(object.material, {
-        emissiveIntensity: () => intensity * 8,
-        duration: () => Math.random() * 0.6,
-        delay: () => Math.random() * 0.1,
-      });
-      screenLight = object;
+      const mesh = object as THREE.Mesh;
+      if (mesh.material && !Array.isArray(mesh.material)) {
+        mesh.material.transparent = true;
+        mesh.material.opacity = 0;
+        const mat = mesh.material as THREE.MeshStandardMaterial;
+        mat.emissive.set("#C8BFFF");
+        gsap.timeline({ repeat: -1, repeatRefresh: true }).to(mat, {
+          emissiveIntensity: () => Math.random() * 8,
+          duration: () => Math.random() * 0.6,
+          delay: () => Math.random() * 0.1,
+        });
+        screenLight = mesh;
+      }
     }
   });
-  let neckBone = character?.getObjectByName("spine005");
+  const neckBone = character?.getObjectByName("spine005");
   if (window.innerWidth > 1024) {
     if (character) {
       tl1

@@ -37,8 +37,8 @@ const setCharacter = (
           character.position.z = -center.z * scale;
 
           // Apply clean premium materials and compute normals for lighting
-          character.traverse((child: any) => {
-            if (child.isMesh) {
+          character.traverse((child: THREE.Object3D) => {
+            if ((child as THREE.Mesh).isMesh) {
               const mesh = child as THREE.Mesh;
               mesh.castShadow = true;
               mesh.receiveShadow = true;
