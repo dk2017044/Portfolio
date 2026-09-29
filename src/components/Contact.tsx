@@ -159,12 +159,12 @@ const Contact = () => {
             </div>
 
             <div className="contact-box contact-copyright-box">
-              <h2>
+              <p className="contact-credit">
                 Designed and Developed <br /> by <span>{config.developer.fullName}</span>
-              </h2>
-              <h5>
+              </p>
+              <p className="contact-year">
                 <MdCopyright /> {new Date().getFullYear()}
-              </h5>
+              </p>
             </div>
           </div>
 

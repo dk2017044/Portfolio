@@ -31,13 +31,19 @@ const Landing = ({ children }: PropsWithChildren) => {
           </div>
           {/* Mobile photo - shows only on mobile when 3D character is hidden */}
           <div className="mobile-photo">
-            <img
-              src="/images/dilip_standing.png"
-              alt={config.developer.fullName}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
+            <picture>
+              <source media="(max-width: 768px)" srcSet="/images/dilip_standing_mobile.webp" type="image/webp" />
+              <source srcSet="/images/dilip_standing.webp" type="image/webp" />
+              <img
+                src="/images/dilip_standing_mobile.webp"
+                alt={config.developer.fullName}
+                width="260"
+                height="340"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
         {children}

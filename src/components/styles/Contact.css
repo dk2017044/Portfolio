@@ -76,18 +76,21 @@ a.contact-social:hover {
   margin-top: 20px;
 }
 
-.contact-box h2 {
+.contact-box h2,
+.contact-box .contact-credit {
   font-weight: 400;
   font-size: 16px;
   margin: 0;
   line-height: 24px;
 }
 
-.contact-box h2 > span {
+.contact-box h2 > span,
+.contact-box .contact-credit > span {
   color: var(--accentColor);
 }
 
-.contact-box h5 {
+.contact-box h5,
+.contact-box .contact-year {
   font-size: 13px;
   font-weight: 500;
   line-height: 14px;

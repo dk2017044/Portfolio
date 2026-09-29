@@ -40,7 +40,7 @@ const WorkImage = (props: Props) => {
             <div className="work-link">
               <MdArrowOutward />
             </div>
-            <img src={props.image} alt={props.alt} loading="lazy" decoding="async" />
+            <img src={props.image} alt={props.alt} width="600" height="380" loading="lazy" decoding="async" />
             {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
           </a>
         ) : (
@@ -54,7 +54,7 @@ const WorkImage = (props: Props) => {
             <div className="work-link">
               <MdArrowOutward />
             </div>
-            <img src={props.image} alt={props.alt} loading="lazy" decoding="async" />
+            <img src={props.image} alt={props.alt} width="600" height="380" loading="lazy" decoding="async" />
             {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
           </Link>
         )
@@ -65,7 +65,7 @@ const WorkImage = (props: Props) => {
           onMouseLeave={() => setIsVideo(false)}
           data-cursor={"disable"}
         >
-          <img src={props.image} alt={props.alt} loading="lazy" decoding="async" />
+          <img src={props.image} alt={props.alt} width="600" height="380" loading="lazy" decoding="async" />
           {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
         </div>
       )}

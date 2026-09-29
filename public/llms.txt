@@ -1,0 +1,19 @@
+# Dilip Kumar - Electronics Engineer & Software Developer Portfolio
+
+> Personal portfolio and project showcase of Dilip Kumar, an Electronics Engineering student at Government Polytechnic Patna-7.
+
+## Overview
+Dilip Kumar explores electronics engineering, circuit design, Android development, Python programming, and AI-assisted workflows.
+
+## Key Projects
+- [ElectroKit](https://github.com/dk2017044/ElectroKit): All-in-one Android electronics toolkit for engineering students.
+- [Python Turtle Projects](https://github.com/dk2017044): Creative graphics, algorithmic patterns, and math experiments.
+- [Practical Electronics & Circuits](https://dilip-port.vercel.app/): Hardware testing, sensor prototyping, and circuit design.
+- [AI & Software Lab](https://dilip-port.vercel.app/): Generative AI applications and prompt engineering experiments.
+
+## Pages & Links
+- [Home Portfolio](https://dilip-port.vercel.app/)
+- [All Works](https://dilip-port.vercel.app/myworks)
+- [Interactive Terminal & Chat](https://dilip-port.vercel.app/play)
+- [GitHub Profile](https://github.com/dk2017044/)
+- [LinkedIn Profile](https://www.linkedin.com/in/di7xu)

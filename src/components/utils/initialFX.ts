@@ -14,6 +14,21 @@ export function initialFX() {
     delay: 1,
   });
 
+  if (window.innerWidth <= 768) {
+    gsap.fromTo(
+      [".landing-intro h2", ".landing-intro h1", ".landing-info"],
+      { opacity: 0, y: 25 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: "power2.out",
+        stagger: 0.12,
+      }
+    );
+    return;
+  }
+
   const selectors = [".landing-info h3", ".landing-intro h2", ".landing-intro h1"];
   const elements = selectors.flatMap(selector => Array.from(document.querySelectorAll(selector)));
   const landingText = new TextSplitter(elements, {

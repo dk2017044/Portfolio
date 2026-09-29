@@ -110,7 +110,7 @@ export const config: {
             title: "ElectroKit – Electronics Toolkit",
             category: "Android / Electronics",
             technologies: "Android, Kotlin, Firebase, Material Design",
-            image: "/images/electrokit.jpg",
+            image: "/images/electrokit.webp",
             description: "An all-in-one electronics toolkit for students featuring number system conversion, resistor color code, SMD resistor code, capacitor and inductor codes, Ohm's Law, power, LED resistor, and series/parallel calculators.",
             link: "https://github.com/dk2017044/ElectroKit/raw/main/Build_Releases_APK/ElectroKit_v4.0.2.apk",
             downloadUrl: "https://github.com/dk2017044/ElectroKit/raw/main/Build_Releases_APK/ElectroKit_v4.0.2.apk",
@@ -121,7 +121,7 @@ export const config: {
             title: "Python Turtle Projects",
             category: "Python / Graphics",
             technologies: "Python, Turtle Graphics, Algorithms, Math",
-            image: "/images/python_turtle.jpg",
+            image: "/images/python_turtle.webp",
             description: "Creative graphics, algorithmic patterns, and interactive programming experiments created while learning Python programming fundamentals.",
             link: "https://github.com/dk2017044"
         },
@@ -130,7 +130,7 @@ export const config: {
             title: "Practical Electronics & Circuits",
             category: "Electronics / Hardware",
             technologies: "Analog & Digital Circuits, Sensors, Hardware Testing",
-            image: "/images/electronics_circuits.jpg",
+            image: "/images/electronics_circuits.webp",
             description: "Hands-on electronics engineering experiments focusing on circuit prototyping, component testing, sensor interfacing, and practical hardware design.",
             link: "https://github.com/dk2017044"
         },
@@ -139,7 +139,7 @@ export const config: {
             title: "AI & Software Development Lab",
             category: "AI / Development",
             technologies: "Generative AI, Prompt Engineering, Python, VS Code, Git",
-            image: "/images/ai_lab.jpg",
+            image: "/images/ai_lab.webp",
             description: "Explorations in Generative AI, AI-assisted software development, and prompt engineering workflows to build practical solutions and accelerate learning.",
             link: "https://github.com/dk2017044"
         }

@@ -22,7 +22,7 @@ const MyWorks = () => {
             <>
               <div className="myworks-card-number">0{index + 1}</div>
               <div className="myworks-card-image">
-                <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
+                <img src={project.image} alt={project.title} width="400" height="240" loading="lazy" decoding="async" />
               </div>
               <div className="myworks-card-info">
                 <h3>{project.title}</h3>

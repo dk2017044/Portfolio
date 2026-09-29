@@ -20,6 +20,9 @@ const Scene = () => {
   const { setLoading } = useLoading();
 
   useEffect(() => {
+    // Never load heavy 3D WebGL renderer and 2MB model on mobile/tablet viewports
+    if (window.innerWidth <= 768) return;
+
     if (canvasDiv.current) {
       const rect = canvasDiv.current.getBoundingClientRect();
       const container = { width: rect.width, height: rect.height };

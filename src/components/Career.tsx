@@ -25,10 +25,10 @@ const Career = () => {
             <div key={index} className="career-info-box">
               <div className="career-info-in">
                 <div className="career-role">
-                  <h4>{exp.position}</h4>
-                  <h5>{exp.company}</h5>
+                  <h3>{exp.position}</h3>
+                  <h4>{exp.company}</h4>
                 </div>
-                <h3>{getDisplayYear(exp.period)}</h3>
+                <div className="career-year">{getDisplayYear(exp.period)}</div>
               </div>
               <p>{exp.description}</p>
             </div>
