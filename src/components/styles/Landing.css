@@ -121,32 +121,38 @@
     display: none;
   }
 
-  /* Show mobile photo with sleek card frame */
+  /* Show mobile photo with sleek card frame matching 9:16 photo proportions */
   .mobile-photo {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative !important;
-    width: 100%;
-    max-width: 260px;
-    height: 340px;
-    margin: 15px auto;
+    width: min(76vw, 250px);
+    aspect-ratio: 9 / 16;
+    height: auto;
+    margin: 18px auto;
     z-index: 2;
     order: 2;
-    border-radius: 24px;
+    border-radius: 26px;
     overflow: hidden;
-    border: 1.5px solid rgba(194, 164, 255, 0.35);
-    background: radial-gradient(circle at 50% 30%, rgba(194, 164, 255, 0.18), rgba(11, 8, 12, 0.95) 75%);
-    box-shadow: 0 15px 40px -10px rgba(194, 164, 255, 0.4), inset 0 0 25px rgba(194, 164, 255, 0.12);
+    border: 1.5px solid rgba(194, 164, 255, 0.4);
+    background: #0b080c;
+    box-shadow: 0 15px 40px -10px rgba(194, 164, 255, 0.4), inset 0 0 25px rgba(194, 164, 255, 0.15);
     pointer-events: none;
     transform: none !important;
+  }
+
+  .mobile-photo picture {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .mobile-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center top;
     display: block;
   }
 }

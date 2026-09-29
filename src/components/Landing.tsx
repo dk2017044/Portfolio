@@ -38,7 +38,7 @@ const Landing = ({ children }: PropsWithChildren) => {
                 src="/images/dilip_standing_mobile.webp"
                 alt={config.developer.fullName}
                 width="260"
-                height="340"
+                height="462"
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
