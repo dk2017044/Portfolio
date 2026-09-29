@@ -9,6 +9,11 @@
   width: var(--cWidth);
   margin: auto;
 }
+.about-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .about-me {
   padding: 40px 0px;
   padding-bottom: 0;
@@ -80,17 +85,24 @@
     width: var(--cWidth);
     justify-content: right;
     max-width: 1920px;
-    height: var(--vh);
-    padding: 0px;
+    height: auto;
+    min-height: var(--vh);
+    padding: 80px 0px;
     opacity: 1;
+  }
+  .about-container-wrapper {
+    width: 52%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
   .about-me {
     padding: 0px;
-    width: 50%;
+    width: 100%;
   }
   .about-me p {
-    font-size: 1.9vw;
-    line-height: 2.3vw;
+    font-size: 1.55vw;
+    line-height: 2.1vw;
   }
 }
 @media only screen and (min-width: 1950px) {

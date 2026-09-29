@@ -1,0 +1,438 @@
+/* ===================================================
+   ABOUT MEDIA PREVIEW CARD (YOUTUBE & INSTAGRAM REELS)
+   =================================================== */
+
+.media-preview-container {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(18, 14, 22, 0.7);
+  border: 1px solid rgba(194, 164, 255, 0.22);
+  border-radius: 20px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 16px;
+  margin-top: 25px;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(194, 164, 255, 0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.media-preview-container:hover {
+  border-color: rgba(194, 164, 255, 0.45);
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7), 0 0 35px -5px rgba(194, 164, 255, 0.25);
+}
+
+/* Header & Tabs */
+.media-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.media-live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ff5252;
+  text-transform: uppercase;
+}
+
+.live-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ff5252;
+  box-shadow: 0 0 8px #ff5252;
+  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(255, 82, 82, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+  }
+}
+
+.media-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.media-tab {
+  background: transparent;
+  border: none;
+  color: #a0a0a0;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.media-tab:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.media-tab.active.youtube {
+  background: rgba(255, 0, 0, 0.18);
+  color: #ffffff;
+  border: 1px solid rgba(255, 0, 0, 0.4);
+}
+
+.media-tab.active.instagram {
+  background: linear-gradient(135deg, rgba(131, 58, 180, 0.25), rgba(253, 29, 29, 0.25));
+  color: #ffffff;
+  border: 1px solid rgba(225, 48, 108, 0.45);
+}
+
+.tab-icon.yt {
+  color: #ff0000;
+  font-size: 14px;
+}
+
+.tab-icon.ig {
+  color: #e1306c;
+  font-size: 13px;
+}
+
+/* Media Screen Area */
+.media-screen {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.media-screen.youtube-aspect {
+  aspect-ratio: 16 / 9;
+}
+
+.media-screen.instagram-aspect {
+  aspect-ratio: 16 / 10;
+  min-height: 280px;
+}
+
+/* Poster Preview State */
+.media-poster-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.media-poster-wrapper:hover .media-poster-img {
+  transform: scale(1.05);
+}
+
+.media-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(11, 8, 12, 0.95) 0%,
+    rgba(11, 8, 12, 0.5) 45%,
+    rgba(11, 8, 12, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+/* Big Glowing Play Button */
+.media-play-button {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.media-play-button .play-icon {
+  margin-left: 4px;
+  font-size: 18px;
+}
+
+.media-play-button.yt-glow {
+  background: #ff0000;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+}
+
+.media-play-button.ig-glow {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(220, 39, 67, 0.6);
+}
+
+.media-poster-wrapper:hover .media-play-button {
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: 0 0 35px rgba(194, 164, 255, 0.8);
+}
+
+/* Info Overlay at bottom */
+.media-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 14px 16px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.media-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #c2a4ff;
+}
+
+.badge-icon.yt-red {
+  color: #ff0000;
+  font-size: 14px;
+}
+
+.media-title {
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.media-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.creator-tag {
+  font-size: 12px;
+  color: #c2a4ff;
+  font-weight: 600;
+}
+
+.media-external-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.media-external-link:hover {
+  opacity: 1;
+  transform: translateX(2px);
+  color: var(--accentColor);
+}
+
+/* Iframe Active Player */
+.media-iframe-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+}
+
+.media-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.media-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.media-close-btn:hover {
+  background: rgba(255, 0, 0, 0.8);
+  border-color: #ff0000;
+  transform: scale(1.1);
+}
+
+/* Instagram Specific Card Mockup */
+.instagram-card-backdrop {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 20%, rgba(225, 48, 108, 0.15), rgba(11, 8, 12, 0.98) 75%);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.instagram-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.instagram-avatar {
+  border-radius: 50%;
+  border: 2px solid #e1306c;
+  object-fit: cover;
+}
+
+.instagram-user-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.instagram-username {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.instagram-audio {
+  font-size: 11px;
+  color: #a8a8a8;
+}
+
+.instagram-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #0095f6;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.instagram-center-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 12px;
+}
+
+.instagram-tap-hint {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.instagram-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.instagram-caption {
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.instagram-frame {
+  min-height: 480px;
+}
+
+.instagram-iframe {
+  height: 480px;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+  .media-preview-container {
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+  }
+  .media-title {
+    font-size: 13px;
+  }
+  .media-play-button {
+    width: 48px;
+    height: 48px;
+  }
+  .media-play-button .play-icon {
+    font-size: 15px;
+  }
+}
